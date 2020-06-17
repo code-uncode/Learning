@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPoker", "ScrumPoker\ScrumPoker.csproj", "{8681BF9B-7110-4818-A95B-893FB0ADE640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPoker.Common", "ScrumPoker.Common\ScrumPoker.Common.csproj", "{BE0BB865-E37F-4E0D-A1F8-040248792F98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8681BF9B-7110-4818-A95B-893FB0ADE640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8681BF9B-7110-4818-A95B-893FB0ADE640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8681BF9B-7110-4818-A95B-893FB0ADE640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8681BF9B-7110-4818-A95B-893FB0ADE640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0BB865-E37F-4E0D-A1F8-040248792F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0BB865-E37F-4E0D-A1F8-040248792F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0BB865-E37F-4E0D-A1F8-040248792F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0BB865-E37F-4E0D-A1F8-040248792F98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {446A418B-23DA-42ED-97AF-2F6942A1C46D}
+	EndGlobalSection
+EndGlobal

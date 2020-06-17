@@ -1,0 +1,53 @@
+﻿@page "/"
+@page "/game/"
+
+<div class="h-75 ">
+
+    <div class="m-4 text-center">
+       <input type="text"  placeholder="Enter name" @bind-value="@user"/>
+    </div>
+    <div class="m-4 p-4 text-center">
+        <button type="button" @onclick="StartGame">Start New Game</button>
+    </div>
+    <div></div>
+    <div class="m-4 p-4 text-lg-center"> 
+        <EditForm Model="@sessionId" OnSubmit="JoinGame">
+            <InputText @bind-Value="@sessionId" placeholder="Enter GameId"/>
+            <button type="submit"> Join A game</button>
+        </EditForm>
+
+    </div>
+</div>
+
+@code
+{
+    public string sessionId { get; set; } = "";
+
+    public string user { get; set; } = "";
+
+    [Inject]
+    NavigationManager NavService { get; set; }
+
+    protected void JoinGame()
+    {
+        if (string.IsNullOrEmpty(sessionId) || !Guid.TryParse(sessionId, out Guid id))
+        {
+            NavService.NavigateTo("/error/InValidGameId");
+        }
+        else
+        {
+            NavService.NavigateTo($"/game/{sessionId}/{user}");
+
+        }
+    }
+
+    protected void StartGame( EventArgs e)
+    {
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            sessionId = Guid.NewGuid().ToString();
+        }
+
+        NavService.NavigateTo($"/game/{sessionId}/{user}");
+    }
+}

@@ -1,0 +1,36 @@
+﻿@page "/game/{GameId}"
+@page "/game/{GameId}/{User}"
+
+@if(string.IsNullOrEmpty(User))
+{
+    <div class="m-4 text-center">
+        <input type="text" placeholder="Enter name" @bind-value="@User"  on/>
+    </div>
+}
+
+<h1>@User</h1>
+
+@code
+{
+
+    [Parameter]
+    public string GameId { get; set; }
+
+    [Parameter]
+    public string User { get; set; }
+
+    [Inject]
+    public NavigationManager navService { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        if(string.IsNullOrEmpty(GameId) || !Guid.TryParse(GameId, out Guid id))
+        {
+            navService.NavigateTo("/error/InValidGameId");
+        }
+
+
+    }
+
+}
