@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ScrumPoker.Data;
+using ScrumPoker.Services;
 
 namespace ScrumPoker
 {
@@ -29,6 +30,8 @@ namespace ScrumPoker
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IDataService, DataService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

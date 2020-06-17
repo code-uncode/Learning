@@ -7,10 +7,10 @@ namespace ScrumPoker.Services
 {
     public interface IDataService
     {
-        public void CreateSession(Guid sessionId);
-        public void AddUser(string userName);
-        public void RemoveUser(string userName);
-        public void UpdateStory(string story);
-        public void GivePoint(string user, int points);
+        public void CreateSession(Guid sessionId, string user);
+        public void AddUser(Guid sessionId, string userName);
+        public void RemoveUser(Guid sessionId, string userName);
+        public void UpdateStory(Guid sessionId, string story);
+        public void GivePoint(Guid sessionId, string user, int points);
     }
 }

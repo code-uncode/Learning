@@ -1,36 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Drawing;
+using ScrumPoker.Common;
 
 namespace ScrumPoker.Services
 {
     public class DataService : IDataService
     {
+        private Dictionary<Guid, SessionInfo> sessionInfoDict;
 
-        public void AddUser(string userName)
+        public DataService()
         {
-            throw new NotImplementedException();
+            sessionInfoDict = new Dictionary<Guid, SessionInfo>();
         }
 
-        public void CreateSession(Guid sessionId)
+        public void AddUser(Guid sessionId, string userName)
         {
-            throw new NotImplementedException();
+            if (IsInvalidSession(sessionId))
+            {
+                return;
+            }
+            sessionInfoDict[sessionId].userInfo.Add(userName, 0);
         }
 
-        public void GivePoint(string user, int points)
+        public void CreateSession(Guid sessionId, string user)
         {
-            throw new NotImplementedException();
+
+            var sessionInfo = new SessionInfo();
+            sessionInfo.adminUser = user;
+            sessionInfo.userInfo.Add(user, 0);
+            sessionInfoDict.Add(sessionId, sessionInfo);
         }
 
-        public void RemoveUser(string userName)
+        public void GivePoint(Guid sessionId, string user, int points)
         {
-            throw new NotImplementedException();
+            if (IsInvalidSession(sessionId))
+            {
+                return;
+            }
+            sessionInfoDict[sessionId].userInfo[user] = points;
         }
 
-        public void UpdateStory(string story)
+        public void RemoveUser(Guid sessionId, string userName)
         {
-            throw new NotImplementedException();
+            if (IsInvalidSession(sessionId))
+            {
+                return;
+            }
+            sessionInfoDict[sessionId].userInfo.Remove(userName);
+        }
+
+        public void UpdateStory(Guid sessionId, string story)
+        {
+            if(IsInvalidSession(sessionId))
+            {
+                return;
+            }
+            sessionInfoDict[sessionId].story = story;
+        }
+
+        private bool IsInvalidSession(Guid sessionId)
+        {
+            return sessionInfoDict.ContainsKey(sessionId);
         }
     }
 }

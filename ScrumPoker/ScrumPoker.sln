@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPoker", "ScrumPoker\ScrumPoker.csproj", "{8681BF9B-7110-4818-A95B-893FB0ADE640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPoker.Common", "ScrumPoker.Common\ScrumPoker.Common.csproj", "{BE0BB865-E37F-4E0D-A1F8-040248792F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPoker.Common", "ScrumPoker.Common\ScrumPoker.Common.csproj", "{BE0BB865-E37F-4E0D-A1F8-040248792F98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,7 @@
-﻿
-@page "/game/{GameId}/{User}"
-
+﻿@page "/game/{GameId}"
+<div class="m-4 text-center">
+    <input type="text" placeholder="Enter name" @bind-value="@User"  @onblur="OnAddingName" />
+</div>
 
 @code
 {
@@ -17,12 +18,17 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        if(string.IsNullOrEmpty(GameId) || !Guid.TryParse(GameId, out Guid id))
+        if (string.IsNullOrEmpty(GameId) || !Guid.TryParse(GameId, out Guid id))
         {
             navService.NavigateTo("/error/InValidGameId");
         }
 
 
+    }
+
+    protected void OnAddingName(EventArgs e)
+    {
+        navService.NavigateTo($"/game/{GameId}/{User}");
     }
 
 }
