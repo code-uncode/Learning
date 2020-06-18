@@ -3,6 +3,6 @@
 ################################################################################
 
 /ScrumPoker/ScrumPoker.Common/bin/Debug/netcoreapp3.1
-**/bin
-**/obj
-**/.vs
+**/bin/*
+**/obj/*
+**/.vs/*
