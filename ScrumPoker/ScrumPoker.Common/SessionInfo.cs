@@ -9,5 +9,10 @@ namespace ScrumPoker.Common
         public string story;
 
         public Dictionary<string, int> userInfo;
+
+        public SessionInfo()
+        {
+            userInfo = new Dictionary<string, int>();
+        }
     }
 }

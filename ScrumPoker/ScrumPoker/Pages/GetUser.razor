@@ -1,6 +1,7 @@
 ﻿@page "/game/{GameId}"
 <div class="m-4 text-center">
-    <input type="text" placeholder="Enter name" @bind-value="@User"  @onblur="OnAddingName" />
+    <input type="text" placeholder="Enter name" @bind-value="@User"  />
+    <button type="button" value="Submit" @onclick="OnAddingName">Press</button>
 </div>
 
 @code
@@ -28,6 +29,7 @@
 
     protected void OnAddingName(EventArgs e)
     {
+        
         navService.NavigateTo($"/game/{GameId}/{User}");
     }
 

@@ -12,5 +12,7 @@ namespace ScrumPoker.Services
         public void RemoveUser(Guid sessionId, string userName);
         public void UpdateStory(Guid sessionId, string story);
         public void GivePoint(Guid sessionId, string user, int points);
+        public bool IsUserAdmin(Guid sesionId, string user);
+        public bool IsValidSession(Guid sessionId);
     }
 }

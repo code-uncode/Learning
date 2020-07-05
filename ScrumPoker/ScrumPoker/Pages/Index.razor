@@ -1,6 +1,8 @@
 ﻿@page "/"
 @page "/game/"
 
+@using ScrumPoker.Services
+
 <div class="h-75 ">
 
     <div class="m-4 text-center">
@@ -11,7 +13,7 @@
     </div>
     <div></div>
     <div class="m-4 p-4 text-lg-center"> 
-        <EditForm Model="@sessionId" OnSubmit="JoinGame">
+        <EditForm Model="sessionId" OnSubmit="JoinGame">
             <InputText @bind-Value="@sessionId" placeholder="Enter GameId"/>
             <button type="submit"> Join A game</button>
         </EditForm>
@@ -28,6 +30,10 @@
     [Inject]
     NavigationManager NavService { get; set; }
 
+    [Inject]
+    IDataService dataService { get; set; }
+
+
     protected void JoinGame()
     {
         if (string.IsNullOrEmpty(sessionId) || !Guid.TryParse(sessionId, out Guid id))
@@ -43,11 +49,9 @@
 
     protected void StartGame( EventArgs e)
     {
-        if (string.IsNullOrEmpty(sessionId))
-        {
-            sessionId = Guid.NewGuid().ToString();
-        }
+        sessionId = Guid.NewGuid().ToString();
 
+        dataService.CreateSession(Guid.Parse(sessionId), user);
         NavService.NavigateTo($"/game/{sessionId}/{user}");
     }
 }

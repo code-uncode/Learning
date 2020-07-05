@@ -1,12 +1,23 @@
 ﻿
-@page "/game/{GameId}/{User}"
+@page "/game/{SessionId}/{User}"
+@using ScrumPoker.Common
+@using ScrumPoker.Services
 
+
+@if(isAdmin)
+{
+    <h1>Admin</h1>
+}
+else
+{
+    <User/>
+}
 
 @code
 {
 
     [Parameter]
-    public string GameId { get; set; }
+    public string SessionId { get; set; }
 
     [Parameter]
     public string User { get; set; }
@@ -14,13 +25,27 @@
     [Inject]
     public NavigationManager navService { get; set; }
 
+    [Inject]
+    public IDataService dataService { get; set; }
+
+    private bool isAdmin;
+
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        if(string.IsNullOrEmpty(GameId) || !Guid.TryParse(GameId, out Guid id))
+        if(!Guid.TryParse(SessionId, out Guid id))
         {
             navService.NavigateTo("/error/InValidGameId");
+            return;
         }
+
+        if(!dataService.IsValidSession(id))
+        {
+            navService.NavigateTo("/error/InvalidSessionId");
+            return;
+        }
+        isAdmin = dataService.IsUserAdmin(id, User);
+
 
 
     }
